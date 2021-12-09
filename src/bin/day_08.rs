@@ -88,7 +88,7 @@ impl Map {
         let three = five_len.remove(three_index);
         let five_index = five_len
             .iter()
-            .position(|example| nine.is_superset(&example))
+            .position(|example| nine.is_superset(example))
             .unwrap();
         let five = five_len.remove(five_index);
         let two = five_len.remove(0);
