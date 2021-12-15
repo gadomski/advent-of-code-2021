@@ -23,7 +23,9 @@ fn caves(input: &str) -> Result<HashMap<String, Cave>, Error> {
             return Err(anyhow!("Should only be two caves: {}", line));
         }
         for (name, other) in [(names[0], names[1]), (names[1], names[0])].iter() {
-            let entry = caves.entry(name.to_string()).or_insert(Cave::new(name));
+            let entry = caves
+                .entry(name.to_string())
+                .or_insert_with(|| Cave::new(name));
             entry.connections.push(other.to_string());
         }
     }
